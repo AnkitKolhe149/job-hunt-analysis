@@ -309,5 +309,5 @@ else:
     st.sidebar.write(f"*Average Minimum Salary:* {filtered_data['Minimum_Salary'].mean():.2f} L")
     st.sidebar.write(f"*Average Maximum Salary:* {filtered_data['Maximum_Salary'].mean():.2f} L")
 
-else:
-    st.write("👆 Please upload an Excel file to get started.")
+# else:
+#     st.write("👆 Please upload an Excel file to get started.")
