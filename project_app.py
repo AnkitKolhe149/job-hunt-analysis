@@ -24,9 +24,9 @@ st.write("Analyze and visualize job data to uncover insights.")
 st.sidebar.header("Upload Your Dataset")
 uploaded_file = st.sidebar.file_uploader("Upload your Excel file", type=["xlsx"])
 
-if uploaded_file:
+if (True):
     # Load the dataset
-    data = pd.read_excel(uploaded_file)
+    data = pd.read_excel("https://github.com/AnkitKolhe149/job-hunt-analysis/raw/0ffa08e92b4c4da6add68b47a3136081eb533868/Updated_JOBLIST1.xlsx")
 
     # Clean the data
     # Drop unnecessary columns (e.g., 'Unnamed: 4') if they exist
