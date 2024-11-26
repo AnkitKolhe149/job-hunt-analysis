@@ -24,9 +24,16 @@ st.write("Analyze and visualize job data to uncover insights.")
 st.sidebar.header("Upload Your Dataset")
 uploaded_file = st.sidebar.file_uploader("Upload your Excel file", type=["xlsx"])
 
+# Default GitHub file link
+github_file_url = "https://github.com/AnkitKolhe149/job-hunt-analysis/raw/0ffa08e92b4c4da6add68b47a3136081eb533868/Updated_JOBLIST1.xlsx"
+
 if uploaded_file:
-    # Load the dataset
+    # Load the uploaded file
     data = pd.read_excel(uploaded_file)
+else:
+    # Load the dataset from the GitHub link
+    st.write("No file uploaded. Loading the default dataset from GitHub...")
+    response = requests.get(github_file_url)
 
     # Clean the data
     # Drop unnecessary columns (e.g., 'Unnamed: 4') if they exist
