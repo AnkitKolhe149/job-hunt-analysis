@@ -23,14 +23,14 @@ st.write("Analyze and visualize job data to uncover insights.")
 # Load the dataset from GitHub
 github_file_url = "https://github.com/AnkitKolhe149/job-hunt-analysis/raw/0ffa08e92b4c4da6add68b47a3136081eb533868/Updated_JOBLIST1.xlsx"
 
-@st.cache_data
-def load_data_from_github(url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        return pd.read_excel(BytesIO(response.content))
-    else:
-        st.error("Failed to load the dataset from GitHub. Please check the URL.")
-        return None
+# @st.cache_data
+# def load_data_from_github(url):
+#     response = requests.get(url)
+#     if response.status_code == 200:
+#         return pd.read_excel(BytesIO(response.content))
+#     else:
+#         st.error("Failed to load the dataset from GitHub. Please check the URL.")
+#         return None
 
 data = load_data_from_github(github_file_url)
 
