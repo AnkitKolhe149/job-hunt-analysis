@@ -96,8 +96,9 @@ if (True):
     y = filtered_data['Salary']
 
     # Feature encoding
-    encoder = OneHotEncoder(sparse_output=False, drop='first')
-    encoded_features = encoder.fit_transform(X[['Job_Title', 'Company', 'Location']])
+    encoder = OneHotEncoder(sparse_output=False, drop='first', handle_unknown='ignore')
+    encoded_features = encoder.fit_transform(X)
+
 
     # Normalize features
     scaler = StandardScaler()
