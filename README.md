@@ -37,7 +37,7 @@ cd job-hunt-analysis
 pip install -r requirements.txt
 ```
 ## Usage
-1)Run the Streamlit app:
+1) Run the Streamlit app:
 ``` ruby
 streamlit run https://github.com/AnkitKolhe149/job-hunt-analysis/blob/main/project_app.py
 ```
