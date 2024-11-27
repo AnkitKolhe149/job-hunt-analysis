@@ -131,40 +131,24 @@ if (True):
     st.write(f"*Mean Squared Error (MSE):* {mse:.3f}")
     st.write(f"*R-squared (R²):* {r2:.3f}")
 
-    # Add Prediction Section
-st.write("## 🎯 Salary Prediction")
+# Add Prediction Section
+    st.write("## 🎯 Salary Prediction")
+    with st.form("prediction_form"):
+        st.write("### Enter Job Details")
+        input_role = st.selectbox("Select Job Role", options=data['Job_Title'].unique(), help="Choose the job title you are interested in.")
+        input_location = st.selectbox("Select Location", options=data['Location'].unique(), help="Choose the location for the job.")
+        input_company = st.text_input("Enter Company Name", help="Optionally, enter the company name for better predictions.")
+        submitted = st.form_submit_button("Predict Salary")
 
-# User Inputs
-with st.form("prediction_form"):
-    st.write("### Enter Job Details")
-    input_role = st.selectbox("Select Job Role", options=data['Job_Title'].unique(), help="Choose the job title you are interested in.")
-    input_location = st.selectbox("Select Location", options=data['Location'].unique(), help="Choose the location for the job.")
-    input_company = st.text_input("Enter Company Name", help="Optionally, enter the company name for better predictions.")
-    
-    # Submit button
-    submitted = st.form_submit_button("Predict Salary")
+    if submitted:
+        input_data = pd.DataFrame({'Job_Title': [input_role], 'Company': [input_company], 'Location': [input_location]})
+        encoded_input = encoder.transform(input_data)
+        scaled_input = scaler.transform(encoded_input)
+        predicted_salary = ridge_best.predict(scaled_input)
+        predicted_salary_exp = np.expm1(predicted_salary)
 
-# Perform prediction when the form is submitted
-if submitted:
-    # Prepare input data
-    input_data = pd.DataFrame({
-        'Job_Title': [input_role],
-        'Location': [input_location],
-        'Company': [input_company]
-    })
-
-    # Encode and scale the input data
-    encoded_input = encoder.transform(input_data[['Job_Title', 'Company', 'Location']])
-    scaled_input = scaler.transform(encoded_input)
-    
-    # Predict salaries
-    predicted_salary = ridge_best.predict(scaled_input)
-
-    # Reverse the log transformation
-    predicted_salary_exp = np.expm1(predicted_salary)
-    
-    st.write("### Predicted Salary")
-    st.metric("Predicted Minimum Salary", f"₹{predicted_salary_exp[0]:,.2f}")
+        st.write("### Predicted Salary")
+        st.metric("Predicted Salary (Approx.)", f"₹{predicted_salary_exp[0]:,.2f}")
 
 
     # Visualization Options
