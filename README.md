@@ -48,8 +48,8 @@ For more details, visit the GitHub repository https://github.com/AnkitKolhe149/j
 ## Contributors
 We would like to thank the following people for their contributions to this project:
 
-### 1) Saidhiraj Kadwajiwar: Data Extraction, Visualization, Predictive Modeling.
-### 2) Ankit Kolhe: Streamlit App Development and Deployment.
+### 1) Saidhiraj Kadwajiwar: Data Extraction,  Predictive Modeling.
+### 2) Ankit Kolhe: Visualization,Streamlit App Development and Deployment.
 ### 3) Siddhi Gangan: Web Scraping and Data Cleaning.
 ### 4) Yashika Rathi: Documentation and Project Coordination.
 ### 5) Amit Saw: Data Analysis and Visualization.
